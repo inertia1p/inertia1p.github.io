@@ -1,10 +1,10 @@
 >下面是博客的搭建教程  
 >从零开始,手把手教学,个人主页   
->重点！重点！该theme来自huxpro，可移步下方学习（orz）
+>重点！重点！该theme来自huxpro，可移步下方huxpro的博客学习（orz）
 >该博客模板来自<a href="https://github.com/huxpro" target="view_window">Hux</a>修改的<a href="https://startbootstrap.com/template-overviews/clean-blog/" target="view_window">Clean Blog</a>   
 >添加了搜索及Gitalk评论插件以及按时间归档   
 >本教程参考自<a href="https://github.com/qiubaiying" target="view_window">BY</a>    
->最后,<a href="https://fedemo.top/" target="view_window">这是我的博客 fedemo.top</a>
+>最后,<a href="https://fedemo.top/" target="view_window">这是他的博客→ fedemo.top</a>
 
 # 从零开始的博客生涯
 
