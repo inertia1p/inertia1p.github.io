@@ -1,10 +1,10 @@
 ﻿# Site settings
-title: inertia1p Blog  #你博客的标题
+title: WELCOME ! HALOHALO !  #你博客的标题
 SEOTitle: A AWESOME BLOG | INERTIA1P Blog  #显示在浏览器上搜索的时候显示的标题
 header-img: img/page-main.jpg #显示在首页的背景图片
 email: inertia1p@outlook.com
-description: "Hey，TEST,TEST,TEST1。" #网站介绍
-keyword: "TEST,TEST,TEST2" #关键词
+description: "Hey，This is inertia1p's blog, every thing will be better!。" #网站介绍
+keyword: "inertia1p,blog,tech" #关键词
 url: "https://inertia1p.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "blog" # you code repository
