@@ -6,7 +6,7 @@ date:       2018-07-13
 author:     inertia1p
 header-img: img/home-bg-o.jpg
 keywords_post:  "blog,随笔，gitpages"
-catalog: true
+catalog: false
 tags:
     - blog
     - 随笔
