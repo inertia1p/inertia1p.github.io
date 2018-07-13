@@ -5,7 +5,7 @@ subtitle:   blog_re0
 date:       2018-07-13
 author:     inertia1p
 header-img: img/home-bg-o.jpg
-keywords_post:  "blog,"
+keywords_post:  "blog,随笔，gitpages"
 catalog: true
 tags:
     - blog
@@ -44,6 +44,12 @@ tags:
 
 (这里是关于catalog的test)
 ## 至少两个标题才能显示catalog吗？
+####这个是测试二级标题
+
+这里我的catalog出现了问题，(测试标签)<br>也许是plugins在git pages上不支持的缘故？我之前在哪里看到过。
+我总会解决这个问题的，我本来应该还有一个返回文章顶部的icon。也没有显示。
+
+修改网站的图标变成一个小灯泡~
 
 
 
