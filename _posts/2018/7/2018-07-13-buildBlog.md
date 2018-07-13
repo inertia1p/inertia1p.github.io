@@ -1,4 +1,4 @@
----
+﻿---
 layout:     post
 title:      关于建立我的blog和博文撰写
 subtitle:   blog_re0
@@ -44,6 +44,7 @@ tags:
 
 (这里是关于catalog的test)
 ## 至少两个标题才能显示catalog吗？
+
 #### 这个是测试二级标题
 
 这里我的catalog出现了问题，(测试标签)<br>也许是plugins在git pages上不支持的缘故？我之前在哪里看到过。
