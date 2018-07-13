@@ -18,7 +18,7 @@ baidu_js_push: false
 
 # Sidebar settings侧边栏
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "testtest3!"
+sidebar-about-description: "A MAN WHO WANT BE BETTER!"
 sidebar-avatar: /img/avatar_p11179162.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -106,7 +106,7 @@ friends: [
         title: "",
         href: ""
     },{
-        title: "test4",
+        title: "WHAT A PITY ! NULL !",
         href: ""
     }
 ]
