@@ -19,7 +19,7 @@ tags:
 
 ![class object](https://inertia1p.github.io/img_post/java.lang.object.png)
 
-* Private static native void registerNatives()
+* Private static native void registerNatives()<br>
  use ‘native’ to decorate itself. In java, the function what decorate by ‘native’need use c/c++ to complete, and be compile into  .dll.
 
 ```
@@ -29,7 +29,7 @@ static{
 }
 ```
 
-* Protected native object clone()
+* Protected native object clone()<br>
 is also used ‘native’ to decorate. Clone() return a quote of object’s duplicate.
 Firstly, we look at the example:
 
@@ -48,52 +48,41 @@ public class ObjectTest{
 ```
 
 This example will return a exception : "The method clone() from the type Object is not visible"
-Why?
+Why?<br>
 Because if you want to use clone() to clone a object, the object need to a implement Cloneable.
 
 * Public final native class<?> getclass()<br>
 returns the class object / run-time class object Class<? > of this Object object. The effect is the same as that of Object.class.(This relate to reflection mechanism in java and I am not really understand!)
 
-* Public boolean equals(Object obj)
-
+* Public boolean equals(Object obj)<br>
 The difference between ‘==’ and ‘equals’ is commonly known.
 == express the value of variable is exactly the same. (basic type is the value, quote is the address)
-Equals express the attribute of quote is the same.
-
+Equals express the attribute of quote is the same.<br>
 /## we always override the function equals() to make it easier to use .
 
-* Public native int hashcode()
-
-Hashcode() have these appointment:
-
-1.During the execution of the java program. When the hashCode() is called multiple times for the same object. It will return the same hashcode. The premise is that the ruler information used in equals comparison is not changed. One execution of java program to anther, the same object return the hashcode need no consistency.
-
-2.If two object called equals() return true, then their hashcode must be consistency.
-
-3.On the contrary, if two object called hashcode() return the same hashcode, they might be not equal.
-
-The method hashCode() show superiority in collection class, when we need set a new object, we need not to use equals(), it may be slow, hashCode() return a hashcode, then just compare the hashcode can confirm the differences in collection.
-
+* Public native int hashcode()<br>
+Hashcode() have these appointment:<br>
+1.During the execution of the java program. When the hashCode() is called multiple times for the same object. It will return the same hashcode. The premise is that the ruler information used in equals comparison is not changed. One execution of java program to anther, the same object return the hashcode need no consistency.<br>
+2.If two object called equals() return true, then their hashcode must be consistency.<br>
+3.On the contrary, if two object called hashcode() return the same hashcode, they might be not equal.<br>
+The method hashCode() show superiority in collection class, when we need set a new object, we need not to use equals(), it may be slow, hashCode() return a hashcode, then just compare the hashcode can confirm the differences in collection.<br>
 /##override the equals() ,always need to override hashCode().
 
-* Public string toString()
-
-/@return getClass().getName() + "@" + Integer.toHexString(hashCode());
-
+* Public string toString()<br>
+/@return getClass().getName() + "@" + Integer.toHexString(hashCode());<br>
 Therefore, toString() is uniquely determined by type of the class and its hashcode. The same type but not equal object might be different because they have possibility of having same hashcode.
 
 * Public final void wait()
 * Public final native void notify()
 * Public final native void notifyAll()
 * Public final native void wait(long timeout)
-* Public final void wait(long timeout, int nanos)
-
-These methods are always used to use thread
+* Public final void wait(long timeout, int nanos)<br>
+These methods are always used to use thread<br>
 Wait():call this method to make current thread to wait until calling notify()/notifyAll() on other threads.
-Wait(long timeout):what is the difference between wait() and wait(long timeout) is that if the waiting time exceed the setting, the thread will wake up.
+Wait(long timeout):what is the difference between wait() and wait(long timeout) is that if the waiting time exceed the setting, the thread will wake up.<br>
 Notify()/notifyAll():used to wake up thread.
 
-* Protected void finalize()
+* Protected void finalize()<br>
 If we want to use this method ,we need define the method ourselves. It be set to default method. At the other time, it will be call before JVM garbage collection mechanism.
 
 #### 2.java.lang.String
