@@ -17,7 +17,7 @@ tags:
 
 >object类
 
-![](https://inertia1p.github.io/img_post/java.lang.object.png)
+
 
 * Private static native void registerNatives()
  use ‘native’ to decorate itself. In java, the function what decorate by ‘native’need use c/c++ to complete, and be compile into  .dll.
