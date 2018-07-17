@@ -86,7 +86,70 @@ Notify()/notifyAll():used to wake up thread.
 If we want to use this method ,we need define the method ourselves. It be set to default method. At the other time, it will be call before JVM garbage collection mechanism.
 
 #### 2.java.lang.String
->待续！
 
+>String 类
+
+* public boolean equals(object ob)<br>
+First of all, compare whether the two object is the same object(use '=='), if true, then return true, otherwise make a further judgment.<br>
+1) judge whether it belongs to String or not.<br>
+2) judge the length of string is equal or not.<br>
+3) compare char
+```
+public boolean equals(Object anObject) {
+     if (this == anObject) {
+         return true;
+     }
+     if (anObject instanceof String) {
+         String anotherString = (String)anObject;
+         int n = value.length;
+         if (n == anotherString.value.length) {
+             char v1[] = value;
+             char v2[] = anotherString.value;
+             int i = 0;
+             while (n-- != 0) {
+                 if (v1[i] != v2[i])
+                      return false;
+             }
+             return true;
+         }
+      }
+      return false;
+}
+```
+
+* public String replace(char oldChar, char newChar)<br>
+a easy function.
+
+```
+public String replace(char oldChar, char newChar) {
+        if (oldChar != newChar) {
+            int len = value.length;
+            int i = -1;
+            char[] val = value; /* avoid getfield opcode */
+
+            while (++i < len) {
+                if (val[i] == oldChar) {
+                    break;
+                }
+            }
+            if (i < len) {
+                char buf[] = new char[len];
+                for (int j = 0; j < i; j++) {
+                    buf[j] = val[j];
+                }
+                while (i < len) {
+                    char c = val[i];
+                    buf[i] = (c == oldChar) ? newChar : c;
+                    i++;
+                }
+                return new String(buf, true);
+            }
+        }
+        return this;
+    }
+```
+
+* public String replace(CharSequence target, CharSequence replacement)<br>
+This function is more commonly used. java.lang.string a
 
 <br>
