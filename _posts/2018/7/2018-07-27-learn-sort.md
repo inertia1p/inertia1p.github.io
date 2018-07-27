@@ -20,12 +20,13 @@ tags:
 
 #### 最熟悉的排序（暂）————冒泡
 
-![bubble_sort] https://inertia1p.github.io/img_post/bubble_sort.gif
+![bubble_sort](https://inertia1p.github.io/img_post/bubble_sort.gif)
+
 冒泡排序是我接触的第一种排序。也是我现在唯一会使用的排序。他的写法为
 
 ``` c++
 for(int i=0;i<N-1;i++){
-  for(int j=0;j<N-j-1;j++){ //这里已经做了一部分优化
+  for(int j=0;j<N-j-1;j++){             /*这里已经做了一部分优化*/
     if(a[j]>a[j+1]){
       temp=a[j];
       a[j]=a[j+1];
@@ -42,7 +43,7 @@ for(int i=0;i<N-1;i++){
 
 ```c++
 for（int i=0,flag=0,temp=0;i<N-1;i++,flag=0）{
-  for(int j=0;j<N-1;j++){  *使用标识时判断语句有所变化*  
+  for(int j=0;j<N-1;j++){               /*使用标识时判断语句有所变化*/
     if(a[j]>a[j+1]){
       temp=a[j];
       a[j]=a[j+1];
@@ -52,7 +53,7 @@ for（int i=0,flag=0,temp=0;i<N-1;i++,flag=0）{
   }
   if(flag==0) break;
 }
-//这个写法比上面的写法循环次数要少。
+/*这个写法比上面的写法循环次数要少。*/
 ```
 
 #### PAT乙级题1035 插入和归并
@@ -61,7 +62,7 @@ for（int i=0,flag=0,temp=0;i<N-1;i++,flag=0）{
 
 ###### 插入排序
 
-![insert_sort] https://inertia1p.github.io/img_post/insert_sort.gif
+![insert_sort](https://inertia1p.github.io/img_post/insert_sort.gif)
 
 插入排序的平均时间复杂度是O(n^2),是稳定的排序算法，序列最好情况是**正序**时间复杂度为O（N），最坏情况是**反序**时间复杂度为O（N^2）。插入排序从第二个元素开始，每次排序把前面的元素当做一个序列。但是因为每一次排序完成后，前面的序列都是正序的。所以，每一次排序都会从前一个元素开始与当前元素比较，如果满足序列要求，则把当前比较元素后移一位。因为后移会覆盖当前元素，所以需要把当前元素用temp记录。不满足条件时，这一次排序结束。总共有N-1次这样的排序。<br>
 代码样例如下：
@@ -85,7 +86,7 @@ int binarysearch(int j,int a[],int i);
 
 for (int i = 1; i < N; i++) {
   int b = binarysearch(a[i],a,i);
-  if (b != -1){  *在前面所有元素后面，不需要移动*
+  if (b != -1){                       /*在前面所有元素后面，不需要移动*/
     int temp = a[i];
     int j = i - 1;
     while (j >= b){
