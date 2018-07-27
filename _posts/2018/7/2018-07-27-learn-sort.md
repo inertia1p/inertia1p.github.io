@@ -42,7 +42,7 @@ for(int i=0;i<N-1;i++){
 
 ```c++
 for（int i=0,flag=0,temp=0;i<N-1;i++,flag=0）{
-  for(int j=0;j<N-1;j++){  // 使用标识时判断语句有所变化  
+  for(int j=0;j<N-1;j++){  *使用标识时判断语句有所变化*  
     if(a[j]>a[j+1]){
       temp=a[j];
       a[j]=a[j+1];
@@ -85,7 +85,7 @@ int binarysearch(int j,int a[],int i);
 
 for (int i = 1; i < N; i++) {
   int b = binarysearch(a[i],a,i);
-  if (b != -1){  //在前面所有元素后面，不需要移动<br>
+  if (b != -1){  *在前面所有元素后面，不需要移动*
     int temp = a[i];
     int j = i - 1;
     while (j >= b){
