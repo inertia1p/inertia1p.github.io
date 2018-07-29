@@ -99,3 +99,84 @@ for (int i = 1; i < N; i++) {
 ```
 
 ~~os：但是实际上根本不会写这个这么麻烦的东西的吧！ZZ~~ <br>
+
+###### 归并排序
+
+![Merge_sort](https://inertia1p.github.io/img_post/Merge_sort.gif)
+
+归并排序（Merge sort）采用分治（divide-and-conquer）策略。它的平均时间复杂度为O（nlog2n）。特别的是它的最坏情况和最好情况的时间复杂度是相同的。它的空间复杂度为O（n）。它是稳定的排序算法
+
+```c++
+#include<vector>
+#include <iostream>
+using namespace std;
+void merge(vector<int> &a, int l, int m, int r, vector<int> temp);
+void mergesort(vector<int> &a);
+void Mergesort(vector<int> &a, vector<int> temp, int l, int r);
+
+void merge(vector<int> &a,int l,int m,int r,vector<int> temp) {
+	int L = l;
+	int M = m + 1; int R = r;
+	int k = 0;
+	while (L <= m && M <= R) {
+		if (a[L] <= a[M]) {
+			temp[k++] = a[L++];
+		}
+		else {
+			temp[k++] = a[M++];
+		}
+	}
+	while (L <= m) {
+		temp[k++] = a[L++];
+	}
+	while (M <= r) {
+		temp[k++] = a[M++];
+	}
+	k = 0;
+	while (l <= r) {
+		a[l++] = temp[k++];
+	}
+
+}
+
+void mergesort(vector<int> &a) {
+	vector<int> temp(a.size());
+	Mergesort(a, temp, 0, a.size() - 1);
+}
+
+void Mergesort(vector<int> &a, vector<int> temp, int l, int r) {
+	if (l < r) {
+		int m = (r + l)/2;
+		Mergesort(a, temp, l, m);
+		Mergesort(a, temp, m+1, r);
+		merge(a, l, m, r, temp);
+	}
+}
+
+int main()
+{
+	int N=9,c=0;
+	vector<int> a;
+	for (int i = 0; i < 9; i++) {
+		cin >> c;
+		a.push_back(c);
+	}
+	mergesort(a);
+	for (auto val : a) {
+		cout << val << ' ';
+	}
+	system("pause");
+	return 0;
+}
+```
+
+归并运算的写法更为复杂，上述代码中主要包括一个类似二叉树的递归分解，把主序列分为一个个小序列，然后通过比较排序（merge（））导入临时存储的序列结构。然后再会推入原序列存储。因为归并排序的形式就是一棵二叉树，它需要遍历的次数就是二叉树的深度，而根据完全二叉树的可以得出它的时间复杂度是O(nlog2n)。  
+归并排序是一种排序速度较快的排序算法，平均比前两种算法都要高效。这里我们不得不提到同样两种优秀的排序算法————快速排序（quick sort）和堆排序（heap sort）。  
+* 若从空间复杂度来考虑：首选堆排序，其次是快速排序，最后是归并排序。  
+* 若从稳定性来考虑，应选取归并排序，因为堆排序和快速排序都是不稳定的。  
+* 若从平均情况下的排序速度考虑，应该选择快速排序。   
+接下来我准备来学习总结这两种排序算法。  
+
+#### 高效但不稳定的排序————堆排序、快速排序和希尔排序
+
+###### 堆排序
