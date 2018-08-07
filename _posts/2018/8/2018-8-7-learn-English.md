@@ -24,8 +24,9 @@ tags:
 
 *UNC College Football Players Suspended for selling Jordan PEs*  
 >suspend : v.暂停;悬;挂;延缓  
- suspended : adj.暂停的，缓期的（宣判），悬浮的  
+>suspended : adj.暂停的，缓期的（宣判），悬浮的  
              v.暂停;悬( suspend的过去式和过去分词 );延缓;使暂时停职（或停学等）
+
 *The Nintendo 3DS XL SNES Edition is $50 off at Amazon today*  
 > SNES : 超级任天堂（SNES）平台，该版本3DS可游玩SNES上的经典游戏（老游戏）  
 
@@ -35,3 +36,7 @@ tags:
 
 *'Avengers : Infinity War' Director Says Avengers Theme is Most Emotional MCU Theme*
 >MCU : Marvel Cinematic Universe 的缩写  
+
+#### TECH
+
+*Academics created a periodic table of mind-blowing tech, and it's handy guide to how the world will change forever*
