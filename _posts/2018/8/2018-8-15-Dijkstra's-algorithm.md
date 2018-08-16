@@ -58,22 +58,22 @@ int main()
 	num[c1] = 1;  //原点到原点一条线路
 	for (int i = 0; i < n; i++) {
 		int u = -1, min = inf;    
-		for (int j = 0; j < n; j++) {   //得到一个新的*最近的*未访问城市
-			if (visit[j] == false && dis[j] < min) {  //如果未访问且于旧原点可达
+		for (int j = 0; j < n; j++) {   //得到一个新的*最近的*未访问城市  
+			if (visit[j] == false && dis[j] < min) {  //如果未访问且于旧原点可达  
 				u = j;
-				min = dis[j]; //用作比较周边城市的远近
+				min = dis[j]; //用作比较周边城市的远近    
 			}
 		}
 		if (u == -1) break;  
-		visit[u] = true; // 标记*已确定到达该城市的最短路径
-		for (int v = 0; v < n; v++) {  //遍历所有城市来找到
-			if (visit[v] == false && e[u][v] != inf) { //新城市可达
-				if (dis[u] + e[u][v] < dis[v]) { //比较当前确定路径和新路径大小
+		visit[u] = true; // 标记*已确定到达该城市的最短路径   
+		for (int v = 0; v < n; v++) {  //遍历所有城市来找到     
+			if (visit[v] == false && e[u][v] != inf) { //新城市可达     
+				if (dis[u] + e[u][v] < dis[v]) { //比较当前确定路径和新路径大小     
 					dis[v] = dis[u] + e[u][v];
-					num[v] = num[u]; //路径数目不变
+					num[v] = num[u]; //路径数目不变    
 					w[v] = w[u] + weight[v];
 				}
-				else if (dis[u] + e[u][v] == dis[v]) { //长度相等
+				else if (dis[u] + e[u][v] == dis[v]) { //长度相等    
 					num[v] = num[v] + num[u];   //到达该城市方法就加上到达前一座城市的方法
 					if (w[u] + weight[v] > w[v]) w[v] = w[u] + weight[v]; //比较两种方法的最大人数
 				}
