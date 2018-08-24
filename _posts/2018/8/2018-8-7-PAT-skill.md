@@ -56,3 +56,7 @@ int main()
 
 2.stoi，stol，stod，stoll..  
 把string转化为int，long，double，long long。这些是它们各自的返回值，很简单的方法。
+
+## 暂列单
+
+ \*max_element(::iter,::iter);
