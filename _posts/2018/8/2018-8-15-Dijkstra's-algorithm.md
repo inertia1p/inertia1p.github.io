@@ -31,7 +31,7 @@ Dijkstra's  algorithm was conceived by computer scientist Edsger W. Dijkstra in 
 5. If the destination node has been marked visited (when planning a route between two specific nodes) or if the smallest tentative distance among the nodes in the unvisited set is infinity (when planning a complete traversal; occurs when there is no connection between the initial node and **remaining unvisited nodes**), **then stop**. The algorithm has finished.
 6. Otherwise, select the unvisited node that is marked with the smallest tentative distance, set it as the new "current node", and go back to step 3.
 
-## 应用题——PAT Advanced Level 1003 Emergency
+## PAT Advanced Level 1003 Emergency
 
 ```c++
 #include<iostream>
@@ -88,6 +88,162 @@ int main()
 
 关键在确立bool visit[]和初始化路径inf，这样第一可以确定哪些点是判断原点到该点距离完毕的，第二inf是可以作不可达的比较，不然程序中难以评判不可达的标准。
 
+
+## PAT Advanced Level 100Battel Over Cities
+
+```c++
+#include <cstdio>
+#include<iostream>
+#include <algorithm>
+using namespace std;
+int road[1010][1010];
+bool visit[1010];
+int N, M, K;
+// dfs深度遍历，这里用于找出一个连通分图
+void dfs(int t) {
+	visit[t] = true;
+	for (int i = 1; i <= N; i++) {
+		if (visit[i] == false && road[t][i] == 1) {
+			dfs(i);
+		}
+	}
+}
+int main()
+{
+	cin >> N >> M >> K;
+	for (int i = 0; i < M; i++) {
+		int a, b;
+		scanf("%d %d", &a, &b);
+		road[a][b] = road[b][a] = 1;
+	}
+	for (int i = 0; i < K; i++) {
+		int chek,cnt=0;
+		fill(visit, visit + 1010, false);
+		cin >> chek;
+		visit[chek] = true;
+    //如果有一个连通分图cnt就加1
+		for (int j = 1; j <= N; j++) {
+			if (visit[j] == false) {
+				dfs(j);
+				cnt++;
+			}
+		}
+		cout << cnt - 1 << endl;
+	}
+	system("pause");
+	return 0;
+}
+```
+
+这题的题意是一开始给你一张强连通图，然后他给你去掉一个点，然后问你至少要几条边才能把剩下的点连重新连成强连通图。这里可以想到，要把重新组成强连通图只需要把生成的连通分图重连，也就是需要cnt（连通分图数）-1条边。  
+所以一个循环DFS算法，统计连通分图数就可以了。  
+这个应该也算Dijkstra算法的衍生。  
+
+
+## 震惊！！99%的人都做不出的题目PAT Advanced Level 1018 Public Bike Management
+
+呜呜呜呜  @ A @
+
+又发现自己有多菜。这题我一定要自己先想个方法出来！
+---
+更新。
+真的菜，无法接受自己臃肿的算法，内存占太多了，学习了前辈的算法。Dijkstra和DFS。先用Dijkstra把最短路径找出来，使用pre[]来把每个节点的最小路径前置节点记录，用于DFS搜索时的条件，这样就可以重新遍历一遍最短路径，又占用比较小的内存。算法结构也清晰简单。我还看了几个另外的解题思路。觉得记录前置节点绝对是最简单的做法。
+
+```c++
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+const int inf = 99999999;
+int cmax, n, sp, m;
+int minNeed = inf, minBack = inf;
+int e[510][510], dis[510], weight[510];
+bool visit[510];
+vector<int> pre[510];
+vector<int> path, temppath;
+void dfs(int v) {
+	temppath.push_back(v);
+	if (v == 0) {
+		int need = 0, back = 0;
+		for (int i = temppath.size() - 1; i >= 0; i--) {
+			int id = temppath[i];
+			if (weight[id] > 0) {
+				back += weight[id];
+			}
+			else {
+				if (back > (0 - weight[id])) {
+					back += weight[id];
+				}
+				else {
+					need += ((0 - weight[id]) - back);
+					back = 0;
+				}
+			}
+		}
+		if (need < minNeed) {
+			minNeed = need;
+			minBack = back;
+			path = temppath;
+		}
+		else if (need == minNeed && back < minBack) {
+			minBack = back;
+			path = temppath;
+		}
+		temppath.pop_back();
+		return;
+	}
+	for (int i = 0; i < pre[v].size(); i++)
+		dfs(pre[v][i]);
+	temppath.pop_back();
+}
+int main() {
+	fill(e[0], e[0] + 510 * 510, inf);
+	fill(dis, dis + 510, inf);
+	scanf("%d%d%d%d", &cmax, &n, &sp, &m);
+	for (int i = 1; i <= n; i++) {
+		scanf("%d", &weight[i]);
+		weight[i] = weight[i] - cmax / 2;
+	}
+	for (int i = 0; i < m; i++) {
+		int a, b;
+		scanf("%d%d", &a, &b);
+		scanf("%d", &e[a][b]);
+		e[b][a] = e[a][b];
+	}
+	dis[0] = 0;
+	for (int i = 0; i <= n; i++) {
+		int u = -1, minn = inf;
+		for (int j = 0; j <= n; j++) {
+			if (visit[j] == false && dis[j] < minn) {
+				u = j;
+				minn = dis[j];
+			}
+		}
+		if (u == -1) break;
+		visit[u] = true;
+		for (int v = 0; v <= n; v++) {
+			if (visit[v] == false && e[u][v] != inf) {
+				if (dis[v] > dis[u] + e[u][v]) {
+					dis[v] = dis[u] + e[u][v];
+					pre[v].clear();
+					pre[v].push_back(u);
+				}
+				else if (dis[v] == dis[u] + e[u][v]) {
+					pre[v].push_back(u);
+				}
+			}
+		}
+	}
+	dfs(sp);
+	printf("%d 0", minNeed);
+	for (int i = path.size() - 2; i >= 0; i--)
+		printf("->%d", path[i]);
+	printf(" %d", minBack);
+	return 0;
+}
+```
+
+**PS：以后甲级题复习一定记得重新做！别再做不出来了，丢人！**
 ---
 
 可能待续 。。。   。。。
