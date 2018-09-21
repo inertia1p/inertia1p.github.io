@@ -5,12 +5,12 @@ subtitle:   找不到错误是真的很烦————鲁迅没说过
 date:       2018-09-14
 author:     inertia1p
 header-img: img/post-bg-github-cup.jpg
-keywords_post:  ""
+keywords_post:  "C++，图，PAT"
 catalog: true
 tags:
     - C++
-    -
-    -
+    - PAT
+    - 图
 ---
 
 ## 题目大意
