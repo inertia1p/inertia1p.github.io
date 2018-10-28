@@ -6,6 +6,7 @@ date:       2018-10-27
 author:     inertia1p
 header-img: img/post-bg-github-cup.jpg
 keywords_post:  "centos 网路配置"
+
 catalog: true
 tags:
     - python
@@ -34,5 +35,11 @@ nmcli con up 接口名  配置生效
 3.  ping error：Name or service not known  这个其实和坑1是一样的，是因为DNS没有配置，我这里又出现了这个问题是因为我测试是使用的VM虚拟机，在配置网卡时用了主机模式，需要换成NAT模式
 4. gcc yup -y install gcc
 
+## 坑3 后台运行
 
+```
+#setsid python xxx.py
+#ps -aux //查看后台进程
+#kill -9 [PID] //结束进程
+```
 >''
